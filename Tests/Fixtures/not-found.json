@@ -1,0 +1,1 @@
+{"errors":[{"message":"No collective found with slug nobody-here-0","locations":[{"line":1,"column":3}],"path":["account"],"extensions":{"code":"INTERNAL_SERVER_ERROR"}}],"data":{"account":null}}
