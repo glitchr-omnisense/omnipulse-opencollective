@@ -3,7 +3,7 @@
     "type": "library",
     "description": "Omnifund's Open Collective, under any PHP host: a collective read through Open Collective's GraphQL API v2 - its profile and yearly budget, its tiers, its backers (public data, no key needed; a personal token raises the rate limit).",
     "keywords": ["sponsors", "backers", "opencollective", "open-collective", "graphql", "funding", "donations", "framework-agnostic", "omnifund"],
-    "homepage": "https://github.com/glitchr-studio/omnifund-opencollective",
+    "homepage": "https://github.com/glitchr-omnisense/omnifund-opencollective",
     "license": "MIT",
     "authors": [
         {
@@ -13,7 +13,7 @@
     ],
     "require": {
         "php": ">=8.2",
-        "omniscient/omnifund": "^1.0@dev",
+        "omnisense/omnifund": "^1.0@dev",
         "symfony/http-client-contracts": "^3.0"
     },
     "require-dev": {

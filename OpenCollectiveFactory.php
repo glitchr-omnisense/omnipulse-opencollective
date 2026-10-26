@@ -30,7 +30,7 @@ final class OpenCollectiveFactory extends ProviderFactory
             'omnifund.required_options' => ['account'],
             'token' => '',
             'endpoint' => OpenCollectiveProvider::ENDPOINT,
-            'user_agent' => 'omnifund (+https://github.com/glitchr-studio/omnifund)',
+            'user_agent' => 'omnifund (+https://github.com/glitchr-omnisense/omnifund)',
         ]);
     }
 

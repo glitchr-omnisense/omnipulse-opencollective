@@ -17,7 +17,7 @@ final class LiveTest extends TestCase
 {
     public function testACollectiveItsTiersAndBackers(): void
     {
-        $provider = new OpenCollectiveProvider(HttpClient::create(['timeout' => 20]), 'webpack', userAgent: 'omnifund-tests/1.0 (+https://github.com/glitchr-studio/omnifund)');
+        $provider = new OpenCollectiveProvider(HttpClient::create(['timeout' => 20]), 'webpack', userAgent: 'omnifund-tests/1.0 (+https://github.com/glitchr-omnisense/omnifund)');
 
         $profile = $provider->profile();
         self::assertSame('webpack', $profile->handle);

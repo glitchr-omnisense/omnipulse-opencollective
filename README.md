@@ -1,6 +1,6 @@
 # omnifund/opencollective
 
-Open Collective for [omniscient/omnifund](https://github.com/glitchr-studio/omnifund), under any
+Open Collective for [omnisense/omnifund](https://github.com/glitchr-omnisense/omnifund), under any
 PHP host: a collective read through Open Collective's GraphQL API v2 - its profile and yearly
 budget, its tiers, its backers. Public data: no key needed.
 
