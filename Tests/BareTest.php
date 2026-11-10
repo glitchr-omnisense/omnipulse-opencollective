@@ -1,20 +1,20 @@
 <?php
 
-namespace Omnifund\OpenCollective\Tests;
+namespace Omnipulse\OpenCollective\Tests;
 
-use Omnifund\OpenCollective\OpenCollectiveProvider;
+use Omnipulse\OpenCollective\OpenCollectiveProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
- * omnifund/opencollective with no framework: every class of the package loaded in a PHP
+ * omnipulse/opencollective with no framework: every class of the package loaded in a PHP
  * process of its own, with nothing from outside but what it requires -
- * omnisense/omnifund and Symfony's HTTP client contracts (interfaces only): no framework, no other HTTP client, no application, even
+ * omnisense/omnipulse and Symfony's HTTP client contracts (interfaces only): no framework, no other HTTP client, no application, even
  * in the harness where they are installed beside it.
  */
 final class BareTest extends TestCase
 {
     private const FOREIGN = '~^(?:Symfony\\\\(?!Contracts\\\\HttpClient\\\\|Polyfill\\\\)|(?:Illuminate|Laravel|Doctrine|Twig|League|Nyholm|Omnibridge|Base|App|GuzzleHttp|Http)\\\\)~';
-    private const ALLOWED_FILES = '~/vendor/(?:omnisense/omnifund|symfony/http-client-contracts|composer)/|/vendor/autoload\.php$|^/omnifund/(?:core|plugins/opencollective)/~';
+    private const ALLOWED_FILES = '~/vendor/(?:omnisense/omnipulse|symfony/http-client-contracts|composer)/|/vendor/autoload\.php$|^/omnipulse/(?:core|plugins/opencollective)/~';
 
     public function testEveryClassLoadsWithTheRequiredPackagesAlone(): void
     {
@@ -45,6 +45,6 @@ final class BareTest extends TestCase
                 return $vendor.'/autoload.php';
             }
         }
-        self::markTestSkipped('No autoloader knows omnifund/opencollective\'s tests.');
+        self::markTestSkipped('No autoloader knows omnipulse/opencollective\'s tests.');
     }
 }

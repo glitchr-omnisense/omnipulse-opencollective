@@ -1,19 +1,19 @@
 <?php
 
-namespace Omnifund\OpenCollective;
+namespace Omnipulse\OpenCollective;
 
-use Omnifund\Capabilities;
-use Omnifund\Exception\ProviderException;
-use Omnifund\Http\Json;
-use Omnifund\Model\Income;
-use Omnifund\Model\Money;
-use Omnifund\Model\Period;
-use Omnifund\Model\Profile;
-use Omnifund\Model\Sponsor;
-use Omnifund\Model\Tier;
-use Omnifund\ProfileInterface;
-use Omnifund\SponsorsInterface;
-use Omnifund\TiersInterface;
+use Omnipulse\Capabilities;
+use Omnipulse\Exception\ProviderException;
+use Omnipulse\Http\Json;
+use Omnipulse\Model\Income;
+use Omnipulse\Model\Money;
+use Omnipulse\Model\Period;
+use Omnipulse\Model\Profile;
+use Omnipulse\Model\Sponsor;
+use Omnipulse\Model\Tier;
+use Omnipulse\ProfileInterface;
+use Omnipulse\SponsorsInterface;
+use Omnipulse\TiersInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 /**
@@ -38,7 +38,7 @@ final class OpenCollectiveProvider implements ProfileInterface, SponsorsInterfac
         private readonly string $account,
         private readonly ?string $token = null,
         private readonly string $endpoint = self::ENDPOINT,
-        private readonly string $userAgent = 'omnifund (+https://github.com/glitchr-omnisense/omnifund)',
+        private readonly string $userAgent = 'omnipulse (+https://github.com/glitchr-omnisense/omnipulse)',
     ) {
     }
 

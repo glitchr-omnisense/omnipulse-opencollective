@@ -1,12 +1,15 @@
-# omnifund/opencollective
+# omnipulse/opencollective
 
-Open Collective for [omnisense/omnifund](https://github.com/glitchr-omnisense/omnifund), under any
+Open Collective for [omnisense/omnipulse](https://github.com/glitchr-omnisense/omnipulse), under any
 PHP host: a collective read through Open Collective's GraphQL API v2 - its profile and yearly
 budget, its tiers, its backers. Public data: no key needed.
 
+Formerly `omnifund/opencollective` (omnifund merged into omnipulse on 2026-11-10: `Omnifund\OpenCollective\` is now
+`Omnipulse\OpenCollective\`; this package replaces the former name).
+
 ```php
-use Omnifund\OpenCollective\OpenCollectiveFactory;
-use Omnifund\Registry;
+use Omnipulse\OpenCollective\OpenCollectiveFactory;
+use Omnipulse\Registry;
 
 $registry = new Registry([new OpenCollectiveFactory($httpClient)], [
     'oc' => ['factory' => 'opencollective', 'options' => ['account' => 'webpack']],

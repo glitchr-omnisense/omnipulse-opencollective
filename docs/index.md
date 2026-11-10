@@ -1,6 +1,6 @@
-# omnifund/opencollective
+# omnipulse/opencollective
 
-Open Collective for [omnisense/omnifund](https://github.com/glitchr-omnisense/omnifund): a
+Open Collective for [omnisense/omnipulse](https://github.com/glitchr-omnisense/omnipulse): a
 collective read through Open Collective's GraphQL API v2
 (`POST https://api.opencollective.com/graphql/v2`) - its profile and yearly budget, its tiers,
 its backers. Public data: no key needed. Two queries: the account (`account(slug)`: profile,
@@ -9,10 +9,10 @@ tiers, stats, the backers counted) and its members with the `BACKER` role, 100 a
 ## Installation
 
 ```sh
-composer require omnifund/opencollective symfony/http-client
+composer require omnipulse/opencollective symfony/http-client
 ```
 
-Requires PHP 8.2, `omnisense/omnifund` (1.x) and `symfony/http-client-contracts` (^3.0): the
+Requires PHP 8.2, `omnisense/omnipulse` (1.x) and `symfony/http-client-contracts` (^3.0): the
 application gives the HTTP client to the factory's constructor. No library is wrapped: none on
 Packagist covers Open Collective's API v2.
 
@@ -27,7 +27,7 @@ None for public data. A **personal token** of an Open Collective account raises 
 | `account` | string | - | yes | the collective's slug: `webpack` |
 | `token` | string | none | no | a personal token, sent as `Personal-Token` when set |
 | `endpoint` | string | `https://api.opencollective.com/graphql/v2` | no | |
-| `user_agent` | string | `omnifund (+https://github.com/glitchr-omnisense/omnifund)` | no | sent with every call |
+| `user_agent` | string | `omnipulse (+https://github.com/glitchr-omnisense/omnipulse)` | no | sent with every call |
 
 ## Capabilities
 
@@ -72,8 +72,8 @@ joining the messages. Amounts are Open Collective's `valueInCents` and `currency
 
 require __DIR__.'/vendor/autoload.php';
 
-use Omnifund\OpenCollective\OpenCollectiveFactory;
-use Omnifund\Registry;
+use Omnipulse\OpenCollective\OpenCollectiveFactory;
+use Omnipulse\Registry;
 use Symfony\Component\HttpClient\HttpClient;
 
 $registry = new Registry([new OpenCollectiveFactory(HttpClient::create(['timeout' => 10]))], [

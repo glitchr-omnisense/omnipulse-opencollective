@@ -1,8 +1,8 @@
 <?php
 
-namespace Omnifund\OpenCollective\Tests;
+namespace Omnipulse\OpenCollective\Tests;
 
-use Omnifund\OpenCollective\OpenCollectiveProvider;
+use Omnipulse\OpenCollective\OpenCollectiveProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\HttpClient;
@@ -10,14 +10,14 @@ use Symfony\Component\HttpClient\HttpClient;
 /**
  * Open Collective's API itself, without a key: two calls (10 a minute are
  * allowed), public data of a long-standing collective. `docker compose run
- * --rm omnifund live`; never in the default run.
+ * --rm omnipulse live`; never in the default run.
  */
 #[Group('live')]
 final class LiveTest extends TestCase
 {
     public function testACollectiveItsTiersAndBackers(): void
     {
-        $provider = new OpenCollectiveProvider(HttpClient::create(['timeout' => 20]), 'webpack', userAgent: 'omnifund-tests/1.0 (+https://github.com/glitchr-omnisense/omnifund)');
+        $provider = new OpenCollectiveProvider(HttpClient::create(['timeout' => 20]), 'webpack', userAgent: 'omnipulse-tests/1.0 (+https://github.com/glitchr-omnisense/omnipulse)');
 
         $profile = $provider->profile();
         self::assertSame('webpack', $profile->handle);

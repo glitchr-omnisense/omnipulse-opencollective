@@ -1,13 +1,13 @@
 <?php
 
-namespace Omnifund\OpenCollective\Tests;
+namespace Omnipulse\OpenCollective\Tests;
 
-use Omnifund\Exception\ProviderException;
-use Omnifund\Model\Period;
-use Omnifund\Model\Sponsor;
-use Omnifund\OpenCollective\OpenCollectiveFactory;
-use Omnifund\OpenCollective\OpenCollectiveProvider;
-use Omnifund\Registry;
+use Omnipulse\Exception\ProviderException;
+use Omnipulse\Model\Period;
+use Omnipulse\Model\Sponsor;
+use Omnipulse\OpenCollective\OpenCollectiveFactory;
+use Omnipulse\OpenCollective\OpenCollectiveProvider;
+use Omnipulse\Registry;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;

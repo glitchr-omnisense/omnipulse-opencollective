@@ -1,10 +1,10 @@
 <?php
 
-namespace Omnifund\OpenCollective;
+namespace Omnipulse\OpenCollective;
 
-use Omnifund\Config;
-use Omnifund\ProviderFactory;
-use Omnifund\ProviderInterface;
+use Omnipulse\Config;
+use Omnipulse\ProviderFactory;
+use Omnipulse\ProviderInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 /**
@@ -25,12 +25,12 @@ final class OpenCollectiveFactory extends ProviderFactory
     protected function populate(Config $c): void
     {
         $c->defaults([
-            'omnifund.factory_name' => 'opencollective',
-            'omnifund.factory_title' => 'Open Collective',
-            'omnifund.required_options' => ['account'],
+            'omnipulse.factory_name' => 'opencollective',
+            'omnipulse.factory_title' => 'Open Collective',
+            'omnipulse.required_options' => ['account'],
             'token' => '',
             'endpoint' => OpenCollectiveProvider::ENDPOINT,
-            'user_agent' => 'omnifund (+https://github.com/glitchr-omnisense/omnifund)',
+            'user_agent' => 'omnipulse (+https://github.com/glitchr-omnisense/omnipulse)',
         ]);
     }
 

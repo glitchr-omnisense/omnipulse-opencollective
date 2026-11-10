@@ -21,7 +21,7 @@ foreach ($iterator as $file) {
     if ('' === $source || str_contains($source, 'class_alias(') || str_contains($source, '@suggested ')) {
         continue;
     }
-    $class = 'Omnifund\\OpenCollective\\'.str_replace('/', '\\', substr($file->getPathname(), strlen($root) + 1, -4));
+    $class = 'Omnipulse\\OpenCollective\\'.str_replace('/', '\\', substr($file->getPathname(), strlen($root) + 1, -4));
     if (class_exists($class) || interface_exists($class) || enum_exists($class) || trait_exists($class)) {
         $loaded[] = $class;
     }
