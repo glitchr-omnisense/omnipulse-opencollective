@@ -120,3 +120,12 @@ This package is an independent, unofficial client: it is not affiliated with, en
 sponsored by Open Collective. Whoever runs it complies with Open Collective's [Terms of
 Service](https://opencollective.com/tos) and its [API documentation](https://graphql-docs-v2.opencollective.com/)
 (10 calls a minute without a token); see the README's Responsibility section.
+
+## Usage policy
+
+Open Collective's usage policy is declared as data in [`policy.json`](policy.json) (omnisense/contracts'
+schema, named in `composer.json`'s `extra.omnisense.policy`), its terms read on
+2026-11-10 (https://graphql-docs-v2.opencollective.com/): no rate limit declared (none published); commercial use and redistribution under contract (Terms of Service 11, 13(b)); no key required. omnipulse's registry enforces it - a call over a
+limit is never made, a 429 and its `Retry-After` hold every next call
+(`UsageLimitReachedException`) - and a site may tighten it, never loosen it
+(omnisense/omnipulse's docs/policies.md).

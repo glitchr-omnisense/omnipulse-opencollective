@@ -36,6 +36,6 @@ final class OpenCollectiveFactory extends ProviderFactory
 
     protected function build(Config $c): ProviderInterface
     {
-        return new OpenCollectiveProvider($this->http, (string) $c->string('account'), $c->string('token'), $c->string('endpoint') ?? OpenCollectiveProvider::ENDPOINT, (string) $c->string('user_agent'));
+        return new OpenCollectiveProvider($this->http, (string) $c->string('account'), $c->string('token'), $c->string('endpoint') ?? OpenCollectiveProvider::ENDPOINT, (string) $c->string('user_agent'), $c->backoff());
     }
 }

@@ -1,0 +1,37 @@
+{
+    "$schema": "https://github.com/glitchr-omnisense/contracts/blob/1.x/resources/usage-policy.schema.json",
+    "provider": "opencollective",
+    "rateLimits": null,
+    "rights": {
+        "commercial": "contract",
+        "openSourceRequired": null,
+        "caching": {
+            "permission": "unknown",
+            "maxTtl": null
+        },
+        "storage": "unknown",
+        "redistribution": "contract",
+        "attribution": {
+            "required": false,
+            "text": null,
+            "url": null,
+            "where": []
+        },
+        "licence": null
+    },
+    "requirements": {
+        "key": false,
+        "userAgent": {
+            "required": false,
+            "pattern": null
+        }
+    },
+    "provenance": {
+        "terms": "https://opencollective.com/tos",
+        "policy": "https://graphql-docs-v2.opencollective.com/",
+        "verifiedAt": "2026-11-10",
+        "declaredBy": "maintainer",
+        "contact": "https://opencollective.com/contact",
+        "notes": "No rate limit is published for the GraphQL API v2 (searched on 2026-11-10; the API answers 429 past an unpublished threshold): rate limits unknown. A personal token is optional for public data. The Terms of Service grant a personal-use licence (13(b)), exclude selling or commercially using the platform or its content (13(b)(i)) and copying or distributing its content (13(b)(ii)) without permission, and ask prior written consent for a third-party application that interacts with the platform (11): commercial use and redistribution under contract. Caching and storage are not addressed."
+    }
+}

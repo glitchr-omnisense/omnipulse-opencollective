@@ -14,6 +14,9 @@ use Omnipulse\Model\Tier;
 use Omnipulse\ProfileInterface;
 use Omnipulse\SponsorsInterface;
 use Omnipulse\TiersInterface;
+use Omnisense\Contracts\Policy\Backoff;
+use Omnisense\Contracts\Policy\DeclaresUsagePolicyInterface;
+use Omnisense\Contracts\Policy\UsagePolicy;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 /**
@@ -22,8 +25,13 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
  * income), its tiers, its backers - public data, which the API gives
  * without a key.
  */
-final class OpenCollectiveProvider implements ProfileInterface, SponsorsInterface, TiersInterface
+final class OpenCollectiveProvider implements ProfileInterface, SponsorsInterface, TiersInterface, DeclaresUsagePolicyInterface
 {
+    /** Open Collective's usage policy, as its terms read on the day it says (provenance.verifiedAt). */
+    public const POLICY = __DIR__.'/policy.json';
+
+    private static ?UsagePolicy $policy = null;
+
     public const ENDPOINT = 'https://api.opencollective.com/graphql/v2';
     private const PAGE = 100;
 
@@ -39,6 +47,7 @@ final class OpenCollectiveProvider implements ProfileInterface, SponsorsInterfac
         private readonly ?string $token = null,
         private readonly string $endpoint = self::ENDPOINT,
         private readonly string $userAgent = 'omnipulse (+https://github.com/glitchr-omnisense/omnipulse)',
+        private readonly ?Backoff $backoff = null,
     ) {
     }
 
@@ -52,12 +61,19 @@ final class OpenCollectiveProvider implements ProfileInterface, SponsorsInterfac
         return 'Open Collective';
     }
 
+    public function usagePolicy(): UsagePolicy
+    {
+        return self::$policy ??= UsagePolicy::fromFile(self::POLICY);
+    }
+
     public function capabilities(): Capabilities
     {
         return new Capabilities(profile: true, sponsors: true, tiers: true, key: false, terms: [
             'https://opencollective.com/tos',
             'https://graphql-docs-v2.opencollective.com/',
-        ]);
+        ],
+            policy: $this->usagePolicy(),
+        );
     }
 
     public function profile(?string $account = null): Profile
@@ -154,7 +170,7 @@ final class OpenCollectiveProvider implements ProfileInterface, SponsorsInterfac
         if (null !== $this->token) {
             $headers['Personal-Token'] = $this->token;
         }
-        $answer = Json::request($this->http, 'POST', $this->endpoint, ['headers' => $headers, 'json' => ['query' => $query, 'variables' => $variables]], 'Open Collective', $what);
+        $answer = Json::request($this->http, 'POST', $this->endpoint, ['headers' => $headers, 'json' => ['query' => $query, 'variables' => $variables]], 'Open Collective', $what, $this->backoff);
         if ([] !== $errors = Json::list($answer, 'errors')) {
             throw ProviderException::answered('Open Collective', $what, implode('; ', array_map(static fn ($e) => Json::string($e, 'message') ?? '?', $errors)));
         }
