@@ -7,6 +7,37 @@ budget, its tiers, its backers. Public data: no key needed.
 Formerly `omnifund/opencollective` (omnifund merged into omnipulse on 2026-11-10: `Omnifund\OpenCollective\` is now
 `Omnipulse\OpenCollective\`; this package replaces the former name).
 
+## Install and a first call
+
+```sh
+composer require omnipulse/opencollective
+```
+
+No account for this first call: Open Collective's answer is recorded
+(`Omnipulse\Testing\RecordedHttpClient` answers in place of the API), so nothing leaves the process.
+A real call needs no account for a collective's public data (a personal token only raises the rate
+limit), only an HTTP client.
+
+```php
+<?php
+
+require __DIR__.'/vendor/autoload.php';
+
+use Omnipulse\OpenCollective\OpenCollectiveFactory;
+use Omnipulse\Testing\RecordedHttpClient;
+
+// Open Collective's answer, recorded: nothing sent. HttpClient::create() (symfony/http-client) for a real call.
+$http = RecordedHttpClient::routes([
+    'POST /graphql/v2' => '{"data": {"account": {"slug": "octo-collective", "name": "Octo Collective", "description": "Octo is a build tool for the web.", "members": {"totalCount": 3}, "stats": {"yearlyBudget": {"valueInCents": 1250000, "currency": "USD"}}}}}',
+]);
+$opencollective = (new OpenCollectiveFactory($http))->create(['account' => 'octo-collective']);
+
+$profile = $opencollective->profile();
+echo $profile->name, ' ', $profile->sponsors, ' members, ', $profile->income?->amount->decimal(), ' ', $profile->income?->amount->currency, " a year\n";   // Octo Collective 3 members, 12500.00 USD a year
+```
+
+With your credentials, through the family's registry:
+
 ```php
 use Omnipulse\OpenCollective\OpenCollectiveFactory;
 use Omnipulse\Registry;
